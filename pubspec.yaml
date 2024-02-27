@@ -1,0 +1,41 @@
+name: news_app
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.2.6 <4.0.0'
+
+dependencies:
+  buttons_tabbar: ^1.3.8
+  carousel_slider: ^4.2.1
+  flutter:
+    sdk: flutter
+  flutter_date_pickers: ^0.4.2
+  flutter_launcher_icons: ^0.13.1
+  flutter_svg: ^2.0.10+1
+  gap: ^3.0.1
+  google_fonts: ^6.1.0
+  hive_flutter: ^1.1.0
+  image_picker: ^1.0.7
+  lottie: ^3.1.0
+  shared_preferences: ^2.2.2
+  smooth_page_indicator: ^1.1.0
+
+dev_dependencies:
+  flutter_lints: ^2.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - Assets/Animation - globeNews.json
+    - Assets/accountingImage.png
+    - Assets/accountIcon.png
+    - Assets/player.jpg
+    - Assets/TrainingPlayers.jpg
+    - Assets/HomeIcon.svg
+    - Assets/FolderIcon.svg
+    - Assets/SearchIcon.svg
+    - Assets/ProfileIcon.svg
