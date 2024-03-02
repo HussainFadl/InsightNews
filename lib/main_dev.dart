@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/Home/Features/splash_view.dart';
+import 'package:news_app/Home/Presentation/ViewModel/home_cubit.dart';
 import 'package:news_app/Utils/App_Colors.dart';
 import 'package:news_app/Utils/App_Text_Styles.dart';
 
@@ -12,30 +14,33 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          scaffoldBackgroundColor: AppColors.blackColor,
-          appBarTheme: AppBarTheme(
-            color: AppColors.darkThemeColor,
-          ),
-          bottomNavigationBarTheme: BottomNavigationBarThemeData(
-            selectedItemColor: AppColors.lemonadeColor,
-            unselectedItemColor: AppColors.greyColor,
-            type: BottomNavigationBarType.fixed,
-            backgroundColor: AppColors.darkThemeColor,
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
-          ),
-          inputDecorationTheme: InputDecorationTheme(
-            hintStyle: getSmallStyle(),
-            fillColor: Colors.grey[800],
-            filled: true,
-            enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
-                borderSide: BorderSide.none),
-          )),
-      home: const SplashView(),
+    return BlocProvider(
+      create: (context) => NewsCubit(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+            scaffoldBackgroundColor: AppColors.blackColor,
+            appBarTheme: AppBarTheme(
+              color: AppColors.darkThemeColor,
+            ),
+            bottomNavigationBarTheme: BottomNavigationBarThemeData(
+              selectedItemColor: AppColors.lemonadeColor,
+              unselectedItemColor: AppColors.greyColor,
+              type: BottomNavigationBarType.fixed,
+              backgroundColor: AppColors.darkThemeColor,
+              showSelectedLabels: false,
+              showUnselectedLabels: false,
+            ),
+            inputDecorationTheme: InputDecorationTheme(
+              hintStyle: getSmallStyle(),
+              fillColor: Colors.grey[800],
+              filled: true,
+              enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                  borderSide: BorderSide.none),
+            )),
+        home: const SplashView(),
+      ),
     );
   }
 }

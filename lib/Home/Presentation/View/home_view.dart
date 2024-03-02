@@ -5,11 +5,11 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:news_app/Core/local_storage.dart';
-import 'package:news_app/Home/Features/profile_view.dart';
+import 'package:news_app/Functions/profile_view.dart';
+import 'package:news_app/Home/Presentation/Widgets/news_list_widget.dart';
 import 'package:news_app/Utils/App_Colors.dart';
 import 'package:news_app/Utils/App_Functions.dart';
 import 'package:news_app/Utils/App_Text_Styles.dart';
-import 'package:news_app/Widgets/news_list_widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeView extends StatefulWidget {
@@ -162,10 +162,10 @@ class _HomeViewState extends State<HomeView> {
                     const Gap(15),
                     const Expanded(
                       child: TabBarView(children: [
-                        NewsListViewBuilder(),
-                        NewsListViewBuilder(),
-                        NewsListViewBuilder(),
-                        NewsListViewBuilder(),
+                        NewsListViewBuilder(category: 'Sports'),
+                        NewsListViewBuilder(category: 'Science'),
+                        NewsListViewBuilder(category: 'Entertainment'),
+                        NewsListViewBuilder(category: 'Business'),
                       ]),
                     )
                   ]),

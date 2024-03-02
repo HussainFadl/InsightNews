@@ -7,11 +7,13 @@ class CustomButton extends StatelessWidget {
     this.background = const Color(0xff30312D),
     required this.text,
     required this.onPressed,
+     this.foreground=Colors.white,
   });
 
   final String text;
   final Function() onPressed;
   final Color background;
+  final Color foreground;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class CustomButton extends StatelessWidget {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             backgroundColor: background,
-            foregroundColor: AppColors.whiteColor),
+            foregroundColor: foreground),
         onPressed: onPressed,
         child: Text(
           text,
