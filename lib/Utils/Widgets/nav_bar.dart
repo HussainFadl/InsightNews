@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:news_app/Functions/profile_view.dart';
-import 'package:news_app/Functions/Search/searc_view.dart';
-import 'package:news_app/Functions/source_view.dart';
-import 'package:news_app/Home/Presentation/View/home_view.dart';
+import 'package:news_app/Features/Home/profile_view.dart';
+import 'package:news_app/Features/Search/searc_view.dart';
+import 'package:news_app/Features/Source/source_view.dart';
+import 'package:news_app/Features/Home/home_view.dart';
 import 'package:news_app/Utils/App_Colors.dart';
 
 class NavBarWidget extends StatefulWidget {

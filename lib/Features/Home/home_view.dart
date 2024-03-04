@@ -3,13 +3,17 @@ import 'dart:io';
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:news_app/Core/Data/ViewModel/home_cubit.dart';
+import 'package:news_app/Core/Data/ViewModel/home_states.dart';
+import 'package:news_app/Core/Data/news_model.dart';
 import 'package:news_app/Core/local_storage.dart';
-import 'package:news_app/Functions/profile_view.dart';
-import 'package:news_app/Home/Presentation/Widgets/news_list_widget.dart';
+import 'package:news_app/Features/Home/profile_view.dart';
 import 'package:news_app/Utils/App_Colors.dart';
 import 'package:news_app/Utils/App_Functions.dart';
 import 'package:news_app/Utils/App_Text_Styles.dart';
+import 'package:news_app/Utils/Widgets/news_list_widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeView extends StatefulWidget {
@@ -90,37 +94,57 @@ class _HomeViewState extends State<HomeView> {
                     const SizedBox(
                       height: 30,
                     ),
-                    CarouselSlider.builder(
-                      itemCount: 6,
-                      itemBuilder:
-                          (BuildContext context, int itemIndex, int pageView) =>
-                              ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Image.asset(
-                          'Assets/player.jpg',
-                          height: 180,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      options: CarouselOptions(
-                          height: 180,
-                          viewportFraction: 0.8,
-                          initialPage: 0,
-                          enableInfiniteScroll: true,
-                          reverse: false,
-                          autoPlay: false,
-                          autoPlayInterval: const Duration(seconds: 1),
-                          autoPlayAnimationDuration:
-                              const Duration(milliseconds: 8),
-                          enlargeCenterPage: true,
-                          enlargeFactor: 0.3,
-                          onPageChanged: (index, reason) {
-                            setState(() {
-                              itemIndex = index;
-                            });
-                          },
-                          scrollDirection: Axis.horizontal),
+
+                    BlocBuilder<NewsCubit, NewsStates>(
+                      builder: (
+                        context,
+                        state,
+                      ) {
+                        if (state is NewsByCategoryErrorState) {
+                          return Text(state.error);
+                        } else if (state is NewsByCategorySuccessState) {
+                          NewsModel news = state.model;
+                          var newsItem = news.articles?[itemIndex];
+                          
+                          return CarouselSlider.builder(
+                            itemCount: news.articles?.length ?? 0,
+                            itemBuilder: (BuildContext context, int itemIndex,
+                                    int pageView) =>
+                                ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child: Image.network(
+                                newsItem?.urlToImage ?? '',
+                                fit: BoxFit.cover,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return const SizedBox(
+                                      width: 150, child: Icon(Icons.error));
+                                },
+                              ),
+                            ),
+                            options: CarouselOptions(
+                                height: 180,
+                                viewportFraction: 0.8,
+                                initialPage: 0,
+                                enableInfiniteScroll: true,
+                                reverse: false,
+                                autoPlay: false,
+                                autoPlayInterval: const Duration(seconds: 1),
+                                autoPlayAnimationDuration:
+                                    const Duration(milliseconds: 8),
+                                enlargeCenterPage: true,
+                                enlargeFactor: 0.3,
+                                onPageChanged: (index, reason) {
+                                  setState(() {
+                                    itemIndex = index;
+                                  });
+                                },
+                                scrollDirection: Axis.horizontal),
+                          );
+                        } else {
+                          return const Center(
+                              child: CircularProgressIndicator());
+                        }
+                      },
                     ),
                     Center(
                       child: SmoothPageIndicator(

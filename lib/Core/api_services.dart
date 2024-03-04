@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:news_app/Core/Constants/app_constants.dart';
-import 'package:news_app/Home/Data/news_model.dart';
+import 'package:news_app/Core/Data/news_model.dart';
 
 class ApiServices {
   // getByCategory(){} method

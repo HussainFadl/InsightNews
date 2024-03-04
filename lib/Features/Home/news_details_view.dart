@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:news_app/Home/Data/article.dart';
+import 'package:news_app/Core/Data/article.dart';
 import 'package:news_app/Utils/App_Buttons.dart';
 import 'package:news_app/Utils/App_Colors.dart';
 import 'package:news_app/Utils/App_Text_Styles.dart';

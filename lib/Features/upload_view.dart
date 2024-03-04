@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:news_app/Core/local_storage.dart';
-import 'package:news_app/Home/Presentation/View/home_view.dart';
+import 'package:news_app/Features/Home/home_view.dart';
 import 'package:news_app/Utils/App_Buttons.dart';
 import 'package:news_app/Utils/App_Colors.dart';
 import 'package:news_app/Utils/App_Functions.dart';
 import 'package:news_app/Utils/App_Text_Styles.dart';
-import 'package:news_app/Home/Presentation/View/nav_bar.dart';
+import 'package:news_app/Utils/Widgets/nav_bar.dart';
 
 String? _Image;
 String name = '';

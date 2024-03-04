@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:news_app/Functions/Search/Widgets/search_list_widget.dart';
-import 'package:news_app/Home/Presentation/ViewModel/home_cubit.dart';
+import 'package:news_app/Core/Data/ViewModel/home_cubit.dart';
+import 'package:news_app/Features/Home/home_view.dart';
 import 'package:news_app/Utils/App_Colors.dart';
+import 'package:news_app/Utils/App_Functions.dart';
 import 'package:news_app/Utils/App_Text_Styles.dart';
+import 'package:news_app/Utils/Widgets/search_list_widget.dart';
 
 class SearchView extends StatefulWidget {
   const SearchView({super.key});
@@ -20,6 +22,16 @@ class _SearchViewState extends State<SearchView> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+              onPressed: () {
+                AppFunctions.getMoveToNextPagePush(
+                    context: context,
+                    theScreenYouWantToProceed: const HomeView());
+              },
+              icon: Icon(
+                Icons.arrow_back,
+                color: AppColors.whiteColor,
+              )),
           centerTitle: true,
           title: Text(
             'Find your new',
